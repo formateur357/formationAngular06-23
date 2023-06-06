@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -6,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  public title : string
+  @Input() public title! : string
   public complete : boolean
 
   constructor() {
-    this.title = "Faire les courses"
     this.complete = true
   }
 
@@ -33,6 +32,10 @@ export class TaskComponent implements OnInit {
 
   public getButtonText(): string {
     return this.complete ? "Annuler" : "Terminer"
+  }
+
+  public getButtonColor(): string {
+    return this.complete ? "warn" : "primary"
   }
 
   public toggleComplete(): void {

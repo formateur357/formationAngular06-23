@@ -1,4 +1,5 @@
 <div>
-  <li [class]="getItemVariant()">La tache : {{ title }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span>.</li>
-  <button (click)="toggleComplete()">{{ getButtonText() }}</button>
+  <input [(ngModel)]="title" />
+  <li [class]="getItemVariant()">La tache : {{ title }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span></li>
+  <button mat-raised-button [color]="getButtonColor()" (click)="toggleComplete()">{{ getButtonText() }}</button>
 </div>
