@@ -11,9 +11,9 @@ export class AppComponent {
   // public count: number = 1
 
   constructor() {
-    this.tasks.push(new Task(0, "Faire la vaisselle", false, "Une montagne t'attends."))
-    this.tasks.push(new Task(1, "Faire le menage", true, "Une montagne t'attends."))
-    this.tasks.push(new Task(2, "Faire les courses", false, "Une liste tres longue."))
+    this.tasks.push(new Task(0, "Faire la vaisselle", false, "Une montagne t'attends.", new Date('01/04/2023 09:00')))
+    this.tasks.push(new Task(1, "Faire le menage", true, "Une montagne t'attends.", new Date()))
+    this.tasks.push(new Task(2, "Faire les courses", false, "Une liste tres longue.", new Date(Date.now())))
     // this.tasks.push(new Task(3, "Promener le chien", true, "Avant midi."))
   }
 
