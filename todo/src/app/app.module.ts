@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
+import { TestPipe } from './pipes/test.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    TaskComponent,
+    TestPipe
   ],
   imports: [
     BrowserModule,

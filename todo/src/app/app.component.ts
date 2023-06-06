@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { Task } from './class/task.model';
 
+const initialTasks: Task[] = [
+  new Task(0, "Faire la vaisselle", false, "Une montagne t'attends.", new Date('01/04/2023 09:00')),
+  new Task(1, "Faire le menage", true, "Une montagne t'attends.", new Date()),
+  new Task(2, "Faire les courses", false, "Une liste tres longue.", new Date(Date.now()))
+]
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +14,16 @@ import { Task } from './class/task.model';
 })
 export class AppComponent {
   public tasks: Task[] = []
+  public promise!: Promise<string>
   // public count: number = 1
 
   constructor() {
-    this.tasks.push(new Task(0, "Faire la vaisselle", false, "Une montagne t'attends.", new Date('01/04/2023 09:00')))
-    this.tasks.push(new Task(1, "Faire le menage", true, "Une montagne t'attends.", new Date()))
-    this.tasks.push(new Task(2, "Faire les courses", false, "Une liste tres longue.", new Date(Date.now())))
-    // this.tasks.push(new Task(3, "Promener le chien", true, "Avant midi."))
+    this.promise = new Promise<string>(resolve => {
+      setTimeout(() => {
+        this.tasks = initialTasks
+        resolve("Promesse resolue")
+      }, 3000)
+    })
   }
 
   public get nbTot(): number {
