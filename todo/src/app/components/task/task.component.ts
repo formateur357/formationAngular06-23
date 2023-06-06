@@ -8,7 +8,7 @@ import { Task } from 'src/app/class/task.model';
 })
 export class TaskComponent implements OnInit {
   @Input() public task!: Task
-  @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>()
+  // @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor() {
   }
@@ -40,7 +40,7 @@ export class TaskComponent implements OnInit {
 
   public toggleComplete(): void {
     this.task.complete = !this.task.complete
-    this.toggle.emit(this.task.complete)
+    // this.toggle.emit(this.task.complete)
   }
 
 }

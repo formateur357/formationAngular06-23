@@ -4,5 +4,7 @@ export class Task {
     public title: string,
     public complete: boolean,
     public description: string
-  ) {}
+  ) {
+
+  }
 }
