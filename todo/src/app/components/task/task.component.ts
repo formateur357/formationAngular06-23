@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -7,10 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
   @Input() public title! : string
-  public complete : boolean
+  @Input() public complete! : boolean
+
+  @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor() {
-    this.complete = true
   }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class TaskComponent implements OnInit {
 
   public toggleComplete(): void {
     this.complete = !this.complete
+    this.toggle.emit(this.complete)
   }
 
 }
