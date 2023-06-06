@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Task } from 'src/app/class/task.model';
 
 @Component({
   selector: 'app-task',
@@ -6,9 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  @Input() public title! : string
-  @Input() public complete! : boolean
-
+  @Input() public task!: Task
   @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor() {
@@ -18,30 +17,30 @@ export class TaskComponent implements OnInit {
   }
 
   public getComplete(): string {
-    return this.complete ? "Terminee" : "En cours"
+    return this.task.complete ? "Terminee" : "En cours"
   }
 
   public getBadgeVariant(): string {
     let style: string = "d-inline float-right badge text-bg"
-    return this.complete ? `${style}-success` : `${style}-warning`
+    return this.task.complete ? `${style}-success` : `${style}-warning`
   }
 
   public getItemVariant(): string {
     let style: string = "list-group-item list-group-item"
-    return this.complete ? `${style}-success` : `${style}-warning`
+    return this.task.complete ? `${style}-success` : `${style}-warning`
   }
 
   public getButtonText(): string {
-    return this.complete ? "Annuler" : "Terminer"
+    return this.task.complete ? "Annuler" : "Terminer"
   }
 
   public getButtonColor(): string {
-    return this.complete ? "warn" : "primary"
+    return this.task.complete ? "warn" : "primary"
   }
 
   public toggleComplete(): void {
-    this.complete = !this.complete
-    this.toggle.emit(this.complete)
+    this.task.complete = !this.task.complete
+    this.toggle.emit(this.task.complete)
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './class/task.model';
 
 @Component({
   selector: 'app-root',
@@ -6,18 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title1: string = "Faire la vaisselle"
-  public title2: string = "Faire le menage"
-  public title3: string = "Faire les courses"
-
-  public complete1: boolean = true
-  public complete2: boolean = false
-  public complete3: boolean = false
-
+  public tasks: Task[] = []
   public count: number = 1
+
+  contructor() {
+    this.tasks.push(new Task(0, "Faire la vaisselle", false, "Une montagne t'attends."))
+    this.tasks.push(new Task(1, "Faire le menage", true, "Une montagne t'attends."))
+    this.tasks.push(new Task(2, "Faire les courses", false, "Une liste tres longue."))
+    this.tasks.push(new Task(3, "Promener le chien", true, "Avant midi."))
+  }
 
   public modifyCount(complete: boolean): void {
     this.count += complete ? 1 : -1
+  }
+
+  public trackByFunction(index: number, item: any): string {
+    return item.id;
   }
 
 }

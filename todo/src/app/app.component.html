@@ -1,6 +1,4 @@
 <p>Il y a {{ count }} de taches terminees.</p>
 <ul>
-  <app-task [title]="title1" [complete]="complete1" (toggle)="modifyCount($event)"></app-task>
-  <app-task [title]="title2" [complete]="complete2"></app-task>
-  <app-task [title]="title3" [complete]="complete3"></app-task>
+  <app-task *ngFor="let task of tasks; trackBy: trackByFunction" [task]="task" (toggle)="modifyCount($event)"></app-task>
 </ul>

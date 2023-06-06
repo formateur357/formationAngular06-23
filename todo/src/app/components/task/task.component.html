@@ -1,5 +1,5 @@
 <div>
-  <input [(ngModel)]="title" />
-  <li [class]="getItemVariant()">La tache : {{ title }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span></li>
+  <input [(ngModel)]="task.title" />
+  <li [class]="getItemVariant()">La tache : {{ task.title }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span></li>
   <button mat-raised-button [color]="getButtonColor()" (click)="toggleComplete()">{{ getButtonText() }}</button>
 </div>
