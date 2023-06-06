@@ -38,4 +38,5 @@ export class TaskComponent implements OnInit {
   public toggleComplete(): void {
     this.complete = !this.complete
   }
+
 }
