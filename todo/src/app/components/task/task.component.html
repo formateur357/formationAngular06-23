@@ -1,0 +1,4 @@
+<div>
+  <li [class]="getItemVariant()">La tache : {{ title }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span>.</li>
+  <button (click)="toggleComplete()">{{ getButtonText() }}</button>
+</div>
