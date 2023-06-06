@@ -1,4 +1,4 @@
-<p>{{ nbTrue }}/{{ nbTot }} = {{ percent }}%</p>
+<p>{{ nbTrue }}/{{ nbTot }} = {{ percent | number:'1.0-2' }}%</p>
 <div [ngSwitch]="true">
   <p *ngSwitchCase="percent > 0 && percent < 51">C'est parti !!</p>
   <p *ngSwitchCase="percent > 50 && percent < 100">On en voit le bout !!</p>
@@ -9,5 +9,5 @@
   <app-task *ngFor="let task of tasks; trackBy: trackByFunction" [task]="task"></app-task>
 </ul>
 <ng-template #elseBlock>
-  <p>Il n'y a pas de taches.</p>
+  <p>Il n'y a pas de tache.</p>
 </ng-template>

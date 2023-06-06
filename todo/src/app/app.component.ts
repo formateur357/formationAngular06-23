@@ -14,7 +14,7 @@ export class AppComponent {
     this.tasks.push(new Task(0, "Faire la vaisselle", false, "Une montagne t'attends."))
     this.tasks.push(new Task(1, "Faire le menage", true, "Une montagne t'attends."))
     this.tasks.push(new Task(2, "Faire les courses", false, "Une liste tres longue."))
-    this.tasks.push(new Task(3, "Promener le chien", true, "Avant midi."))
+    // this.tasks.push(new Task(3, "Promener le chien", true, "Avant midi."))
   }
 
   public get nbTot(): number {
