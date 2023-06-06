@@ -25,6 +25,11 @@ export class AppComponent {
     return this.tasks.filter(task => task.complete).length
   }
 
+  public get percent(): number {
+    // protection anti division par 0
+    return this.nbTot > 0 ? this.nbTrue / this.nbTot * 100 : 0
+  }
+
   // public modifyCount(complete: boolean): void {
   //   this.count += complete ? 1 : -1
   // }
