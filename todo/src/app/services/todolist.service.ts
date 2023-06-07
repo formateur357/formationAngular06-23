@@ -12,14 +12,21 @@ const initialTasks: Task[] = [
 })
 export class TodolistService {
   public tasks: Task[] = []
-  public promise!: Promise<string>
 
   constructor() {
-    this.promise = new Promise<string>(resolve => {
+    this.updateTasks(initialTasks)
+  }
+
+  public async updateTasks(tasks: Task[]): Promise<void> {
+    this.tasks = await new Promise<Task[]>((resolve) => {
       setTimeout(() => {
-        this.tasks = initialTasks
-        resolve("Promesse resolue")
+        resolve(Object.assign([], tasks))
       }, 3000)
     })
+  }
+
+  public toggleComplete(id: number): void {
+    let task = this.tasks.filter(task => task.id === id)[0]
+    task.complete = !task.complete
   }
 }

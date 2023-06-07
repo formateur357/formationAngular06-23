@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from 'src/app/class/task.model';
+import { TodolistService } from 'src/app/services/todolist.service';
 
 @Component({
   selector: 'app-task',
@@ -10,11 +11,9 @@ export class TaskComponent implements OnInit {
   @Input() public task!: Task
   // @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>()
 
-  constructor() {
-  }
+  constructor(private todo: TodolistService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public getComplete(): string {
     return this.task.complete ? "Terminee" : "En cours"
@@ -39,8 +38,7 @@ export class TaskComponent implements OnInit {
   }
 
   public toggleComplete(): void {
-    this.task.complete = !this.task.complete
-    // this.toggle.emit(this.task.complete)
+    this.todo.toggleComplete(this.task.id)
   }
 
 }

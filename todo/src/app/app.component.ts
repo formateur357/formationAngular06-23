@@ -10,9 +10,7 @@ export class AppComponent {
 
   // public count: number = 1
 
-  constructor(public todo: TodolistService) {
-
-  }
+  constructor(public todo: TodolistService) {}
 
   public get nbTot(): number {
     return this.todo.tasks.length
