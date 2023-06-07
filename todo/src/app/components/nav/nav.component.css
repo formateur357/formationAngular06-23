@@ -1,0 +1,13 @@
+.active a {
+  font-weight: bold;
+  color: purple;
+}
+
+a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
