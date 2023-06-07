@@ -1,0 +1,9 @@
+<div>
+  <li [class]="getItemVariant()">
+    Id : {{ task.id }}<br />
+    Tache : {{ task.title }} => <span [class]="getBadgeVariant()">{{ getComplete() }}</span><br />
+    Description : {{ task.description }}
+  </li>
+  <button mat-raised-button color="accent" (click)="toggleComplete()">{{ getButtonText() }}</button>
+</div>
+<hr />

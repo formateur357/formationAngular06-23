@@ -1,0 +1,4 @@
+<p>Compteur : {{ count}}</p>
+<ul>
+  <app-task *ngFor="let elt of tasks ; trackBy:trackByFunction" [task]="elt"></app-task>
+</ul>
