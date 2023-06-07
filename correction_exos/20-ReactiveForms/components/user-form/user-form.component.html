@@ -1,0 +1,76 @@
+<h1>Nouvelle Utilisateur</h1>
+<hr/>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Firstname : </mat-label>
+    <input matInput type="text" name="firstName" placeholder="Nom" formControlName="firstName">
+    <mat-error *ngIf="firstName?.dirty">
+      <p *ngIf="firstName?.hasError('required')">
+        Firstname is required
+      </p>
+      <p *ngIf="firstName?.hasError('minlength') || firstName?.hasError('maxlength')">
+        Firstname must be between 3 and 20 characters.
+      </p>
+    </mat-error>
+  </mat-form-field><hr/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Lastname : </mat-label>
+    <input matInput type="text" name="lastName" placeholder="Prenom" formControlName="lastName">
+    <mat-error *ngIf="lastName?.dirty">
+      <p *ngIf="lastName?.hasError('required')">
+        Lastname is required
+      </p>
+      <p *ngIf="lastName?.hasError('minlength') || lastName?.hasError('maxlength')">
+        Lastname must be between 3 and 20 characters.      </p>
+    </mat-error>
+  </mat-form-field><hr/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email : </mat-label>
+    <input matInput type="text" name="email" placeholder="Email" formControlName="email">
+    <mat-error *ngIf="email?.dirty">
+      <p *ngIf="email?.hasError('required')">
+        Email is required.
+      </p>
+      <p *ngIf="email?.hasError('email')">
+        The email must be correctly formatted.\n
+        Ex: Jeandu13@live.fr      </p>
+    </mat-error>
+  </mat-form-field><hr/>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Team :</mat-label>
+    <mat-select name="team" id="team" formControlName="team">
+      <mat-option value="">--Please choose an option--</mat-option>
+      <mat-option value="equipe1">equipe1</mat-option>
+      <mat-option value="equipe2">equipe2</mat-option>
+    </mat-select>
+    <mat-error *ngIf="team?.dirty && team?.hasError('required')">
+      Select a team.
+    </mat-error>
+  </mat-form-field><hr/>
+
+  <mat-form-field class="chip-list" appearance="fill">
+    <mat-label>Skills</mat-label>
+    <mat-chip-list #chipGrid aria-label="skills selection">
+      <mat-chip *ngFor="let skill of skills" (removed)="removeSkill(skill)">
+        {{ skill }}
+        <button matChipRemove [attr.aria-label]="'remove ' + skill">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+    <input placeholder="New Skill..." formControlName="skillCtrl"
+      [matChipInputFor]="chipGrid"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="addSkill()"
+      [value]="skillCtrl.value"/>
+    <mat-error *ngIf="!skills[0]">
+      Please enter at least one skill.
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid || !skills[0]"> valider</button>
+</form>

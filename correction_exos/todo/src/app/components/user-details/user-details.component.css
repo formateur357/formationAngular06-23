@@ -1,0 +1,26 @@
+mat-card-header {
+  background-color: lightseagreen;
+}
+
+mat-card {
+  background-color: lightblue;
+  margin-bottom: 2%;
+  text-align: center;
+  border: solid 4px darkgreen;
+}
+
+li {
+  list-style-type: none;
+  text-align: left;
+  padding: 0 20%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}

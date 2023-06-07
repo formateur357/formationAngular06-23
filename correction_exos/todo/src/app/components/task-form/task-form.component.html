@@ -1,0 +1,23 @@
+<h1>Nouvelle Tache</h1>
+<form  (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+  <mat-form-field appearance="outline" backgroundColor="lightgrey">
+    <mat-label>Titre</mat-label>
+    <input matInput ngModel placeholder="ex: Faire les courses." name="title" required minlength="3">
+  </mat-form-field><hr />
+
+  <mat-form-field appearance="outline" backgroundColor="lightgrey">
+    <mat-label>Description</mat-label>
+    <input matInput ngModel placeholder="Liste de courses :..." name="description" required minlength="3">
+  </mat-form-field><hr />
+
+  <mat-form-field appearance="outline" backgroundColor="lightgrey">
+    <mat-label>Statut</mat-label>
+    <mat-select ngModel name="completed" required>
+      <mat-option value="">--Choisissez une option--</mat-option>
+      <mat-option value=1>False</mat-option>
+      <mat-option value=2>True</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" type="submit" [disabled]="!taskForm.valid">Envoyer</button>
+</form>

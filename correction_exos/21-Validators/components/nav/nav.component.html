@@ -1,0 +1,30 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" color="secondary">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="todolist">
+        <mat-icon>baby_changing_station</mat-icon>
+        <span>Todo list</span>
+      </button>
+      <button mat-menu-item routerLink="userlist">
+        <mat-icon>castle</mat-icon>
+        <span>User list</span>
+      </button>
+      <button mat-menu-item routerLink="task-form">
+        <mat-icon>edit_road</mat-icon>
+        <span>Add task</span>
+      </button>
+      <button mat-menu-item routerLink="user-form">
+        <mat-icon>assist_walker</mat-icon>
+        <span>Add user</span>
+      </button>
+    </mat-menu>
+
+    <span>My Todolist</span>
+
+    <app-login *ngIf="!auth.isAuth; else elseBlock" (click)="auth.login()">Login</app-login>
+    <ng-template #elseBlock><app-logout></app-logout></ng-template>
+  </mat-toolbar>
+</p>

@@ -1,0 +1,27 @@
+<mat-card [class]="getItemVariant()">
+  <mat-card-header>
+    <mat-card-title>
+      <div>
+        <img src="../../../assets/img/icone_todolist.jpeg" mat-card-avatar />
+        <a [routerLink]="['/todolist', task.id]">
+          Titre : {{ task.title }}
+        </a>
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      Id : {{task.id}}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button [color]="color" (click)="toggleComplete()">{{ getButtonText() }}</button>
+  </mat-card-actions>
+
+  <mat-card-footer>
+    {{ task.created | date:'dd/MM/y hh:mm' }}
+  </mat-card-footer>
+</mat-card>

@@ -3,9 +3,9 @@ import { Task } from '../class/task.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const initialTasks: Task[] = [
-  new Task(0, "Faire la vaisselle", false, "Une montagne t'attends.", new Date('01/04/2023 09:00')),
-  new Task(1, "Faire le menage", true, "Une montagne t'attends.", new Date()),
-  new Task(2, "Faire les courses", false, "Une liste tres longue.", new Date(Date.now()))
+  new Task("Faire la vaisselle", false, "Une montagne t'attends."),
+  new Task("Faire le menage", true, "Une montagne t'attends."),
+  new Task("Faire les courses", false, "Une liste tres longue.")
 ]
 
 @Injectable({
@@ -20,6 +20,11 @@ export class TodolistService {
     this._tasks = new BehaviorSubject<Task[]>([])
     this.tasks$ = this._tasks.asObservable()
     this.updateList(initialTasks)
+  }
+
+  public addTask(task: Task): void {
+    this.tasks.push(task)
+    this.emit(this.tasks)
   }
 
   public updateList(tasks: Task[]): void {

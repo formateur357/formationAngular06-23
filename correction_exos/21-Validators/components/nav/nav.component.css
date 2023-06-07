@@ -1,0 +1,10 @@
+mat-toolbar {
+  min-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+app-logout, button {
+  font-size: 0.6em;
+}
+

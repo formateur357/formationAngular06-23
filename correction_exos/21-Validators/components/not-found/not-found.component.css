@@ -1,0 +1,7 @@
+div {
+  width: 100%;
+  position: fixed;
+  top: 40%;
+  text-align: center;
+  color: darkred;
+}

@@ -1,0 +1,9 @@
+
+<br/><p>Details :</p><br/>
+<ul>
+  <li>Id : {{ task?.id }}</li>
+  <li>Titre : {{ task?.title }}</li>
+  <li>Statut : {{ task?.completed }}</li>
+  <li>Description : {{task?.description}}</li>
+  <li>Date de creation : {{ task?.created | date:'dd/MM/y hh:mm' }}</li>
+</ul>

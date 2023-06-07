@@ -1,0 +1,38 @@
+/* .ng-valid:not(form, .group)  {
+  border-right: 5px solid #42A948;
+}
+
+.ng-invalid:not(form, .group, mat-form-field )  {
+  border-right: 5px solid #a94442;
+} */
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.ng-pending:not(mat-form-field) {
+  border-bottom: 5px solid violet;
+}
+
+li {
+  list-style-type: none;
+}
+
+mat-form-field, div.group {
+  align-self: center;
+}
+
+.chip-list {
+  width: 100%;
+}

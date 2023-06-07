@@ -1,10 +1,14 @@
 export class Task {
+  static index: number = 0
+  public id: number
+  public createdDate: Date
+
   constructor(
-    public id: number,
     public title: string,
     public complete: boolean,
     public description: string,
-    public createdDate: Date
   ) {
+    this.id = Task.index++
+    this.createdDate = new Date()
   }
 }

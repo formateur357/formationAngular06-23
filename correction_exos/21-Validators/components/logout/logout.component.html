@@ -1,0 +1,2 @@
+<button mat-raised-button color="warn" *ngIf="auth.isAuth; else elseBlock" color="warn" (click)="auth.logout()">Logout</button>
+<ng-template #elseBlock><p>Veuillez vous connecter.</p></ng-template>

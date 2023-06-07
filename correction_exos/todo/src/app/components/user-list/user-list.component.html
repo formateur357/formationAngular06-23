@@ -1,0 +1,4 @@
+<h2>Liste des utilisateurs</h2>
+<div>
+  <app-user-details *ngFor="let user of users; trackBy: trackByFunction" [user]="user"></app-user-details>
+</div>

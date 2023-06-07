@@ -1,0 +1,21 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>
+      <p>Team: {{ user.team }}</p>
+    </mat-card-title><hr/>
+    <mat-card-subtitle>
+    </mat-card-subtitle>
+  </mat-card-header><hr />
+
+  <mat-card-content>
+    <p>Name: {{ user.firstName }}</p>
+    <p>Lastname: {{ user.lastName }}</p>
+  </mat-card-content><hr/>
+
+  <mat-card-footer>
+    <p>Skills :</p>
+    <ul *ngFor="let skill of user.skills; let i = index; trackBy: trackByFunction">
+      <li>Skill {{ i }} : {{ skill }}</li>
+    </ul>
+  </mat-card-footer>
+</mat-card>

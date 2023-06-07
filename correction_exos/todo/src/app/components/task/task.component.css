@@ -1,0 +1,41 @@
+div {
+  display: flex;
+}
+
+li {
+  margin: 0 2%;
+  text-align:center;
+}
+
+button {
+  margin: 1% 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: purple;
+}
+
+mat-card {
+  min-width: 100px;
+  width: auto;
+
+  text-overflow: ellipsis;
+  text-align: center;
+  overflow: auto;
+  white-space: normal;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 3px solid darkgray;
+}
+
+mat-card-subtitle {
+  color: black;
+}

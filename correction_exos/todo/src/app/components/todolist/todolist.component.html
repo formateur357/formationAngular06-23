@@ -1,0 +1,18 @@
+<p [ngStyle]="{color: textColor}">
+  Nombres de taches terminees : {{ nbTrue }}/{{ nbTask }} = {{ percent | number:'1.0-2'}}%
+</p>
+
+<div [ngSwitch]="true">
+  <h2 *ngSwitchCase="percent > 0 && percent < 51">Et c’est parti !</h2>
+  <h2 *ngSwitchCase="percent > 50 && percent < 100">On en voit le bout !</h2>
+  <h2 *ngSwitchCase="percent == 100">Fini !</h2>
+  <h2 *ngSwitchDefault>Il serait temps de s’y mettre...</h2>
+</div><hr />
+
+<div *ngIf="tasks?.length; else elseBlock">
+  <app-task *ngFor="let task of tasks; trackBy:trackByFunction" [task]="task" (message)="toggleCount($event)"></app-task>
+</div>
+<ng-template #elseBlock>
+  <p>Il n'y a pas de taches pour le moment.</p>
+</ng-template>
+<hr />
