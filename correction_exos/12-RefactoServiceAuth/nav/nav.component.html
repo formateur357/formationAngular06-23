@@ -1,0 +1,2 @@
+<div *ngIf="!auth.isAuth; else elseBlock"><app-login></app-login><app-logout></app-logout></div>
+<ng-template #elseBlock><div><app-logout></app-logout><app-login></app-login></div></ng-template>
