@@ -14,6 +14,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     TodolistComponent,
     NavComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,

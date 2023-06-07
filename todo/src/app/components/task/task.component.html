@@ -1,5 +1,8 @@
 <div>
   <input [(ngModel)]="task.title" />
-  <li [class]="getItemVariant()">La tache : {{ task.title }}  cree le {{ task.createdDate | date:'dd/MM/y hh:mm' }} est <span [class]="getBadgeVariant()">{{ getComplete() }}</span></li>
+  <li [class]="getItemVariant()">
+    <a [routerLink]="['/todolist', task.id]">La tache : {{ task.title }}  cree le {{ task.createdDate | date:'dd/MM/y hh:mm' }} est </a>
+    <span [class]="getBadgeVariant()">{{ getComplete() }}</span>
+  </li>
   <button mat-raised-button [color]="getButtonColor()" (click)="toggleComplete()">{{ getButtonText() }}</button>
 </div>

@@ -29,4 +29,11 @@ export class TodolistService {
     let task = this.tasks.filter(task => task.id === id)[0]
     task.complete = !task.complete
   }
+
+  public getTaskById(id: number): Task | null {
+    if (id === -1)
+      return null
+    else
+      return this.tasks.filter(task => task.id === id)[0]
+  }
 }
