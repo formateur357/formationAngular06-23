@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../class/task.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const initialTasks: Task[] = [
   new Task(0, "Faire la vaisselle", false, "Une montagne t'attends.", new Date('01/04/2023 09:00')),
@@ -11,23 +12,33 @@ const initialTasks: Task[] = [
   providedIn: 'root'
 })
 export class TodolistService {
-  public tasks: Task[] = []
+  private tasks: Task[] = []
+  private _tasks: BehaviorSubject<Task[]>
+  readonly tasks$: Observable<Task[]>
 
   constructor() {
-    this.updateTasks(initialTasks)
+    this._tasks = new BehaviorSubject<Task[]>([])
+    this.tasks$ = this._tasks.asObservable()
+    this.updateList(initialTasks)
   }
 
-  public async updateTasks(tasks: Task[]): Promise<void> {
-    this.tasks = await new Promise<Task[]>((resolve) => {
-      setTimeout(() => {
-        resolve(Object.assign([], tasks))
-      }, 3000)
-    })
+  public updateList(tasks: Task[]): void {
+    this.tasks = tasks
+    this.emit(this.tasks)
+  }
+
+  private emit(tasks: Task[]): void {
+    this._tasks.next(Object.assign([], tasks))
+  }
+
+  public getTasks(): Observable<Task[]> {
+    return this.tasks$
   }
 
   public toggleComplete(id: number): void {
     let task = this.tasks.filter(task => task.id === id)[0]
     task.complete = !task.complete
+    this.emit(this.tasks)
   }
 
   public getTaskById(id: number): Task | null {

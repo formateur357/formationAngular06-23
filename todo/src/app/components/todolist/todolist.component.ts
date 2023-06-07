@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Task } from 'src/app/class/task.model';
 import { TodolistService } from 'src/app/services/todolist.service';
 
 @Component({
@@ -6,18 +8,34 @@ import { TodolistService } from 'src/app/services/todolist.service';
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.css']
 })
-export class TodolistComponent implements OnInit {
+export class TodolistComponent implements OnInit, OnDestroy {
+  public tasks: Task[]
+  public tasks$!: Observable<Task[]>
+  public subscribe!: Subscription
 
-  constructor(public todo: TodolistService) {}
+  constructor(public todo: TodolistService) {
+    this.tasks = []
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getTasks()
+  }
+
+  ngOnDestroy(): void {
+      this.subscribe.unsubscribe()
+  }
+
+  public getTasks(): void {
+    this.tasks$ = this.todo.getTasks()
+    this.subscribe = this.tasks$.subscribe((tasks) => this.tasks = tasks)
+  }
 
   public get nbTot(): number {
-    return this.todo.tasks.length
+    return this.tasks.length
   }
 
   public get nbTrue(): number {
-    return this.todo.tasks.filter(task => task.complete).length
+    return this.tasks.filter(task => task.complete).length
   }
 
   public get percent(): number {
